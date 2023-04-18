@@ -21,8 +21,6 @@ func (h *EchoHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func NewServeMux(echo *EchoHandler) *http.ServeMux {
-	mux := http.NewServeMux()
-	mux.Handle("/echo", echo)
-	return mux
+func (*EchoHandler) Pattern() string {
+	return "/echo"
 }

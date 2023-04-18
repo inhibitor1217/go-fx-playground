@@ -5,6 +5,7 @@ import (
 	"net"
 	"net/http"
 
+	"github.com/inhibitor1217/go-fx-playground/internal/handler"
 	"go.uber.org/fx"
 	"go.uber.org/zap"
 )
@@ -28,4 +29,10 @@ func NewServer(lc fx.Lifecycle, mux *http.ServeMux, log *zap.Logger) *http.Serve
 	})
 
 	return srv
+}
+
+func NewServeMux(route handler.Route) *http.ServeMux {
+	mux := http.NewServeMux()
+	mux.Handle(route.Pattern(), route)
+	return mux
 }

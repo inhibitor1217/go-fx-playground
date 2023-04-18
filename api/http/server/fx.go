@@ -2,6 +2,7 @@ package server
 
 import "go.uber.org/fx"
 
-var Option = fx.Option(
+var Option = fx.Options(
 	fx.Provide(NewServer),
+	fx.Provide(NewServeMux),
 )
