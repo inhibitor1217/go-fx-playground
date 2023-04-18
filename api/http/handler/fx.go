@@ -7,14 +7,6 @@ import (
 )
 
 var Option = fx.Provide(
-	fx.Annotate(
-		NewEchoHandler,
-		fx.As(new(handler.Route)),
-		fx.ResultTags(`name:"echo"`),
-	),
-	fx.Annotate(
-		NewHelloHandler,
-		fx.As(new(handler.Route)),
-		fx.ResultTags(`name:"hello"`),
-	),
+	handler.AsRoute(NewEchoHandler),
+	handler.AsRoute(NewHelloHandler),
 )

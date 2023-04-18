@@ -7,7 +7,7 @@ var Option = fx.Options(
 		NewServer,
 		fx.Annotate(
 			NewServeMux,
-			fx.ParamTags(`name:"echo"`, `name:"hello"`),
+			fx.ParamTags(`group:"routes"`),
 		),
 	),
 )

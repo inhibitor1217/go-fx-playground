@@ -31,9 +31,10 @@ func NewServer(lc fx.Lifecycle, mux *http.ServeMux, log *zap.Logger) *http.Serve
 	return srv
 }
 
-func NewServeMux(route1, route2 handler.Route) *http.ServeMux {
+func NewServeMux(routes []handler.Route) *http.ServeMux {
 	mux := http.NewServeMux()
-	mux.Handle(route1.Pattern(), route1)
-	mux.Handle(route2.Pattern(), route2)
+	for _, r := range routes {
+		mux.Handle(r.Pattern(), r)
+	}
 	return mux
 }
