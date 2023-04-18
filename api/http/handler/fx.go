@@ -1,7 +1,6 @@
 package handler
 
 import (
-	"github.com/inhibitor1217/go-fx-playground/api/http/handler/echo"
 	"github.com/inhibitor1217/go-fx-playground/internal/handler"
 
 	"go.uber.org/fx"
@@ -9,7 +8,13 @@ import (
 
 var Option = fx.Provide(
 	fx.Annotate(
-		echo.NewEchoHandler,
+		NewEchoHandler,
 		fx.As(new(handler.Route)),
+		fx.ResultTags(`name:"echo"`),
+	),
+	fx.Annotate(
+		NewHelloHandler,
+		fx.As(new(handler.Route)),
+		fx.ResultTags(`name:"hello"`),
 	),
 )
